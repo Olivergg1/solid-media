@@ -16,6 +16,7 @@ export interface ModalComponentProps {
   onOpen?: Function
   openOnCreate?: boolean
   sizing: "default" | ModalSizing
+  hideHeader?: boolean 
 }
 
 export interface createModalProps extends ModalComponentProps {

@@ -47,15 +47,15 @@ export const createModal = (props: createModalProps) => {
 const Modal: Component<ModalComponentProps> = (props) => {
   return (
     <div class={styles.modal} classList={{ [styles[props.sizing]]: true }}>
-      <div
-        classList={{ [styles.centerTitle]: props.centerTitle === true }}
-        id={styles.modalHeader}>
-        <h2>{props.title || 'Title'}</h2>
-        <Show when={props.hideCloseButton !== true}>
+      <Show when={props.hideCloseButton !== true}>
           <button id={styles.closeModal} onClick={removeModalFromActive}>
             &#10006;
           </button>
         </Show>
+      <div
+        classList={{ [styles.centerTitle]: props.centerTitle === true, [styles.hidden]: props.hideHeader === true}}
+        id={styles.modalHeader}>
+        <h2>{props.title || 'Title'}</h2>
       </div>
       <div
         id={styles.modalElements}

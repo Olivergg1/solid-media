@@ -23,6 +23,10 @@
   width: 100%;
 }
 
+#modalHeader.hidden {
+  display: none;
+}
+
 #closeModal {
   width: 1.3rem;
   height: 1.3rem;
