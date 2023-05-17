@@ -45,8 +45,21 @@ export const createModal = (props: createModalProps) => {
 }
 
 const Modal: Component<ModalComponentProps> = (props) => {
+  let self: any;
+
+  const handleLostFocus = (e: FocusEvent) => {
+    if (props.closeOnLostFocus === true) {
+
+      // If modal contains the focused element, return and do not close the modal.
+      if (self.contains(e.relatedTarget)) return;
+
+      // Otherwise, close it.
+      removeModalFromActive()
+    }
+  }
+
   return (
-    <div class={styles.modal} classList={{ [styles[props.sizing]]: true }}>
+    <div ref={self} class={styles.modal} onFocusOut={handleLostFocus} classList={{ [styles[props.sizing]]: true }}>
       <Show when={props.hideCloseButton !== true}>
           <button id={styles.closeModal} onClick={removeModalFromActive}>
             &#10006;
